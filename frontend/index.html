@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Heart Disease Prediction</title>
+    <!-- <link rel="stylesheet" type="text/css" href="./style.css" /> -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <!-- <link rel="icon" href="./favicon.png" /> -->
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 id="title">A Predictive Model for Heart Disease</h1>
+        <p id="description">Supervised Machine Learning in Cardiology</p>
+      </header>
+      <form id="heartDiseaseForm" class="back">
+        <div class="form-group">
+          <label for="age">Age </label><br />
+          <input
+            id="age"
+            type="number"
+            step="any"
+            name="age"
+            placeholder="Enter your age in years"
+            required
+            class="form-box"
+            onwheel="this.blur()"
+          /><br />
+        </div>
+        <div class="form-group">
+          <p>Gender</p>
+          <input
+            id="female1"
+            type="radio"
+            name="sex"
+            value="0"
+            class="radio-btn"
+          />
+          <label for="female1">Female [0]</label><br />
+          <input
+            id="male0"
+            type="radio"
+            name="sex"
+            value="1"
+            class="radio-btn"
+          />
+          <label for="male0">Male [1]</label><br />
+        </div>
+        <div class="form-group">
+          <label for="cp">Chest Pain Type</label><br />
+          <select id="cp" name="cp" class="form-box select-color">
+            <option value="" disabled selected hidden>
+              Select Chest Pain Type
+            </option>
+            <option value="0">Typical Angina [0]</option>
+            <option value="1">Atypical Angina [1]</option>
+            <option value="2">Non-Anginal Pain [2]</option>
+            <option value="3">Asymptomatic [3]</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="trestbps">Resting Blood Sugar</label><br />
+          <input
+            id="trestbps"
+            type="number"
+            step="any"
+            name="trestbps"
+            placeholder="Enter resting blood pressure in mm Hg"
+            class="form-box"
+            required
+            onwheel="this.blur()"
+          /><br />
+        </div>
+        <div class="form-group">
+          <label for="chol">Serum Cholesterol</label><br />
+          <input
+            id="chol"
+            type="number"
+            step="any"
+            name="chol"
+            placeholder="Enter your Serum cholesterol in mg/dl"
+            required
+            class="form-box"
+            onwheel="this.blur()"
+          /><br />
+        </div>
+        <div class="form-group">
+          <p>Fasting Blood Sugar level above 120 mg/dl</p>
+          <input
+            id="notabove0"
+            type="radio"
+            name="fbs"
+            value="0"
+            class="radio-btn"
+          />
+          <label for="notabove0">No [0]</label><br />
+          <input
+            id="above1"
+            type="radio"
+            name="fbs"
+            value="1"
+            class="radio-btn"
+          />
+          <label for="above1">Yes [1]</label><br />
+        </div>
+        <div class="form-group">
+          <label for="restecg">Resting Electrocardiogram Results</label><br />
+          <select id="restecg" name="restecg" class="form-box select-color">
+            <option value="" disabled selected hidden>
+              Select Resting Electrocardiogram Results
+            </option>
+            <option value="0">Normal [0]</option>
+            <option value="1">Abnormal ST-T waves [1]</option>
+            <option value="2">Left Ventricular Hypertrophy [2]</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="thalach">Maximum Heart Rate Achieved</label><br />
+          <input
+            id="thalach"
+            type="number"
+            step="any"
+            name="thalach"
+            placeholder="Enter your Maximum Heart Rate Achieved"
+            required
+            class="form-box"
+            onwheel="this.blur()"
+          /><br />
+        </div>
+        <div class="form-group">
+          <p>Exercise Induced Angina</p>
+          <input
+            id="no0"
+            type="radio"
+            name="exang"
+            value="0"
+            class="radio-btn"
+          />
+          <label for="no0">No [0]</label><br />
+          <input
+            id="yes1"
+            type="radio"
+            name="exang"
+            value="1"
+            class="radio-btn"
+          />
+          <label for="yes1">Yes [1]</label><br />
+        </div>
+        <div class="form-group">
+          <label for="oldpeak"
+            >Exercise-Induced ST depression relative to rest</label
+          ><br />
+          <input
+            id="oldpeak"
+            type="number"
+            name="oldpeak"
+            step="any"
+            placeholder="Enter your Exercise-induced ST depression relative to rest"
+            required
+            class="form-box"
+            onwheel="this.blur()"
+          /><br />
+        </div>
+        <div class="form-group">
+          <label for="slope">Slope of the Peak Exercise ST Segment</label><br />
+          <select id="slope" name="slope" class="form-box select-color">
+            <option value="" disabled selected hidden>
+              Select Slope of the Peak Exercise ST Segment
+            </option>
+            <option value="0">Upsloping [0]</option>
+            <option value="1">Flat [1]</option>
+            <option value="2">Downsloping [2]</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ca"
+            >Number of Major Vessels (0-4) Colored by Flourosopy</label
+          ><br />
+          <input
+            id="ca"
+            type="number"
+            step="any"
+            name="ca"
+            placeholder="Enter your Number of Major Vessels Colored by Flourosopy(0-4)"
+            required
+            class="form-box"
+            onwheel="this.blur()"
+          /><br />
+        </div>
+        <div class="form-group">
+          <label for="thal">Thalassemia</label><br />
+          <select id="thal" name="thal" class="form-box select-color">
+            <option value="" disabled selected hidden>
+              Select Thalassemia
+            </option>
+            <option value="1">Normal [1]</option>
+            <option value="2">Fixed Defect [2]</option>
+            <option value="3">Reversable Defect [3]</option>
+          </select>
+        </div>
+        <div class="btn-box form-group">
+          <input type="submit" value="Submit" class="btn" />
+          <input type="reset" value="Reset" class="btn" id="reset-btn" />
+        </div>
+        <div id="result" class="res">Result...</div>
+      </form>
+    </div>
+  </body>
+  <!-- <script src="./script.js"></script> -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <!-- <script>
+    document.getElementById("reset-btn").addEventListener("click", function () {
+      document.getElementById("result").innerHTML = "";
+    });
+
+    document
+      .getElementById("heartDiseaseForm")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        // console.log(formData);
+        fetch("/predict", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const resultDiv = document.getElementById("result");
+            if (data.result === 1) {
+              resultDiv.innerHTML = "Risk";
+              resultDiv.style.color = "red";
+            } else if (data.result === 0) {
+              // console.log(data.result);
+              resultDiv.innerHTML = "No Risk";
+              resultDiv.style.color = "green";
+            } else {
+              resultDiv.innerHTML = "Error";
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+  </script> -->
+</html>
