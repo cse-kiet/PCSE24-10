@@ -1,36 +1,3 @@
-# # app.py
-# from flask import Flask, request, render_template
-# import numpy as np
-# import pickle
-# import os
-
-# app = Flask(__name__, template_folder="frontend")
-
-# # Load the trained model
-# with open('decision_tree_model.pkl', 'rb') as f:
-#     model = pickle.load(f)
-
-# @app.route('/')
-# def index():
-#     return render_template('index.html')
-
-# @app.route('/predict', methods=['POST'])
-# def predict():
-#     input_values = [float(request.form[field]) for field in request.form]
-#     input_as_numpy = np.asarray(input_values)
-#     input_reshaped = input_as_numpy.reshape(1, -1)
-#     prediction = model.predict(input_reshaped)[0]
-
-#     if prediction == 1:
-#         result = "The patient seems to have heart disease :("
-#     else:
-#         result = "The patient seems to be normal :)"
-
-#     return result
-
-# if __name__ == '__main__':
-#     app.run(debug=True)
-
 from flask import Flask, request, render_template, jsonify
 import numpy as np
 import pickle
