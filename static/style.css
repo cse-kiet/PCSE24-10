@@ -92,7 +92,7 @@ option:not([disabled]) {
   width: 49%;
   height: 35px;
   /* background: #37af65; */
-  background: #004045;
+  background: #3bd8f4;
   border-color: #005f36b5;
   border-radius: 5px;
   border-style: solid;
@@ -102,7 +102,7 @@ option:not([disabled]) {
   font-size: 1.25rem;
 }
 .btn:hover {
-  border-color: rgb(26, 128, 0);
+  border-color: rgb(0, 92, 128);
 } 
 
 .res {
